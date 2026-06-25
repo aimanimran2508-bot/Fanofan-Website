@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FanOFan</title>
+   <!-- Font Awesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<!-- GSAP Animation Library (Required for the 3D Slider) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+<script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+
+<!--=============== SWIPER CSS ===============-->
+  <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+
+  <!--=============== CSS ===============-->
+  <link rel="stylesheet" href="assets/css/styles.css">
+   <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Montserrat:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+
+
+
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+     .navbar-left a,
+    .dropbtn {
+      color: white;
+      font-size: 15px;
+      font-weight: 500;
+      padding: 6px 10px;
+      transition: color 0.3s ease;
+    }
+
+    .navbar-left a:hover,
+    .dropbtn:hover {
+      color: #ffcc00;
+    }
+
+
+    
+    /* Dropdown */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+      z-index: 1000;
+
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: var(--color-primary);
+      min-width: 200px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+      border-radius: 6px;
+      overflow: hidden;
+      animation: fadeDown 0.3s ease forwards;
+      margin-top: 2px;
+
+    }
+
+    .dropbtn {
+      color: white;
+      font-size: 15px;
+      font-weight: 500;
+      padding: 6px 10px;
+      transition: color 0.3s ease;
+      background-color: transparent;
+      box-shadow: none;
+      border-radius: none;
+    }
+
+    .dropbtn:hover {
+      color: #ffcc00;
+    }
+
+    .dropdown-content a {
+      color: #ddd;
+      padding: 12px 16px;
+      display: block;
+      transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    }
+
+    .dropdown-content a:hover {
+      background: var(--color-secondary);
+      color: #fff;
+      transform: translateX(6px);
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+
+    .swiper-button-prev i,
+.swiper-button-next i{
+  color: white;
+
+}
+
+    
+  </style>
+
+   
+</head>
+<body>
+    <!-- TOP HEADER -->
+ <div class="top-header" id="home">
+    <div class="logo">
+      <img src="new-logo.png" alt="Logo">
+      <div class="brand"></div>
+    </div>
+    <div class="info-box">
+      <div class="info-item">
+        <i class="fas fa-phone"></i>
+        <div class="info-text"><strong>Contact:</strong><br>0317218511</div>
+      </div>
+      <div class="info-item">
+        <i class="fas fa-envelope"></i>
+        <div class="info-text"><strong>Mail us:</strong><br>fanofancompany@gmail.com</div>
+      </div>
+    </div>
+    <button onclick="location.href='checkout.html'" class="quote-btn">SHOP NOW</button>
+
+  </div>
+
+  <div class="navbar">
+    <div class="navbar-left">
+      <a href="#home">HOME</a>
+      <span>/</span>
+
+
+ <div class="dropdown">
+  <a>SHOP <i class="fa fa-caret-down"></i></a>
+  <div class="dropdown-content">
+    <a href="ceiling-fan.html">Ceiling Fans</a>
+    <a href="pedestal-fan.html">Pedestal Fans</a>
+    <a href="exhaust-fan.html">Exhaust Fans</a>
+    <a href="bracket-fan.html">Bracket Fans</a>
+  </div>
+</div>
+
+      <span>/</span>
+      <a href="#about">ABOUT US</a>
+      <span>/</span>
+      <a href="#gallery">GALLERY</a>
+      <span>/</span>
+      <a href="#test1">TESTIMONIALS</a>
+      <span>/</span>
+      <a href="#contact">CONTACT US</a>
+    </div>
+
+    <div class="navbar-right">
+      <i class="fab fa-facebook-f"></i>
+      <i class="fab fa-twitter"></i>
+      <i class="fab fa-linkedin-in"></i>
+      <i class="fab fa-pinterest"></i>
+      <div class="cart-icon"><i class="fas fa-cart-shopping"></i><span>2</span></div>
+      <i class="fas fa-search"></i>
+    </div>
+  </div>
+    
+
+<div class="carousel" >
+  <div class="slide active"><img src="images/Untitled design (5).png"></div>
+  <div class="slide"><img src="Untitled design (1).png"></div>
+
+  <div class="slide"><img src="im2/Untitled design (3).png"></div>
+  <div class="slide"><img src="im2/Untitled design (2).png"></div>
+  
+  
+  <!-- Prev/Next buttons -->
+  <button class="carousel-btn prev">&#10094;</button>
+  <button class="carousel-btn next">&#10095;</button>
+
+  <!-- Indicators -->
+  <div class="indicators"></div>
+</div>
+
+
+
+
+  
+<!-- category -->
+
+<section class="categories" >
+    <div class="container-wide">
+      <!-- <div class="category-heading">
+        <h2>Explore Our Fan Categories</h2>
+        <p>Find the perfect cooling solution for every need.</p>
+      </div> -->
+
+      <div class="category-grid" >
+        <a href="ceiling-fan.html" class="category-card" aria-label="Ceiling fans">
+          <div class="card-icon-container">
+            <img
+              loading="lazy" decoding="async"
+              src="https://lahorefan.com/wp-content/uploads/2023/01/ceiling-fan-vector.png.webp"
+              class="card-img" alt="Ceiling fan icon"
+              onerror="this.src='https://placehold.co/80x70/001739/ffffff?text=Fan'">
+          </div>
+          <h3 class="acha">Ceiling Fans</h3>
+        </a>
+
+        <a href="pedestal-fan.html" class="category-card" aria-label="Pedestal fans">
+          <div class="card-icon-container">
+            <img
+              loading="lazy" decoding="async"
+              src="https://lahorefan.com/wp-content/uploads/2023/01/padstal-fan-vector.png.webp"
+              class="card-img" alt="Pedestal fan icon"
+              onerror="this.src='https://placehold.co/50x100/001739/ffffff?text=Fan'">
+          </div>
+          <h3 class="acha-jee">Pedestal Fans</h3>
+        </a>
+
+        <a href="exhaust-fan.html" class="category-card" aria-label="Exhaust fans">
+          <div class="card-icon-container">
+            <img
+              loading="lazy" decoding="async"
+              src="https://lahorefan.com/wp-content/uploads/2023/01/exhaust-fan-vector.png.webp"
+              class="card-img" alt="Exhaust fan icon"
+              onerror="this.src='https://placehold.co/44x44/001739/ffffff?text=Fan'">
+          </div>
+          <h3 class="acha">Exhaust Fans</h3>
+        </a>
+
+        <a href="bracket-fan.html" class="category-card" aria-label="Bracket fans">
+          <div class="card-icon-container">
+            <img
+              loading="lazy" decoding="async"
+              src="https://lahorefan.com/wp-content/uploads/2023/01/wall-fan-vector.png.webp"
+              class="card-img" alt="Bracket fan icon"
+              onerror="this.src='https://placehold.co/54x84/001739/ffffff?text=Fan'">
+          </div>
+          <h3 class="acha">Bracket Fans</h3>
+        </a>
+      </div>
+    </div>
+  </section>
+
+ <div id="gallery" style="height: 2%;"></div>
+
+ <br style="height: 10px;"> <br>
+  <section  class="products"   >
+    <div class="container-wide">
+      <h3 class="section-title">Top-Selling Fans for Every Home</h3>
+      <p class="section-sub">Stay Cool, Stay Comfortable – Loved by Thousands!</p>
+
+     <div class="products-container">
+        <div class="product" data-name="p-1">
+          <img src="images/0004_crystal-crown-n.c-black-1024x1024.png" alt="Crystal Crown NC Black Ceiling Fan" class="billo">
+          <h3>Crystal Crown NC Black</h3>
+          <div class="price">14,000 PKR</div>
+        </div>
+
+         <div class="product" data-name="p-2">
+          <img src="images/0000_crystal-crown-t.wood_-1024x1024 copy.png" alt="Mega Bracket Fan" class="billo">
+          <h3>Crystal Crown NC Wood</h3>
+          <div class="price">14,000 PKR</div>
+        </div>
+
+        <div class="product" data-name="p-3">
+          <img src="images/0003_crystal-crown-n.c-silver-1024x1024.png" alt="Crystal Crown NC Silver Ceiling Fan" class="billo">
+          <h3>Crystal Crown NC Silver</h3>
+          <div class="price">14,000 PKR</div>
+        </div>
+
+        <div class="product" data-name="p-4">
+          <img src="images/Mega.png" alt="Mega Bracket Fan">
+          <h3>Mega Bracket</h3>
+          <div class="price">12,000 PKR</div>
+        </div>
+
+        <div class="product" data-name="p-5">
+          <img src="images/0001_n.c-special-1024x1024.png" alt="NC Special Bracket Fan">
+          <h3>NC Special Bracket</h3>
+          <div class="price">18,000 PKR</div>
+        </div>
+
+        <div class="product" data-name="p-6">
+          <img src="images/Ceiling-Exhaust-1024x1024.png" alt="Ceiling Exhaust Fan">
+          <h3>Ceiling Exhaust</h3>
+          <div class="price">10,000 PKR</div>
+        </div>
+
+        <div class="product" data-name="p-7">
+          <img src="images/industrial-metal-exhaust-1024x1024.png" alt="Industrial Metal Exhaust Fan">
+          <h3>Industrial Metal Exhaust</h3>
+          <div class="price">11,000 PKR</div>
+        </div>
+
+        <div class="product" data-name="p-8">
+          <img src="images/plastic-exhaust-offwhite-1024x1024.png" alt="plastic Exhaust Fan">
+          <h3>Plastic Exhaust</h3>
+          <div class="price">10,000 PKR</div>
+        </div>
+
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal previews -->
+  <div class="products-preview" id="previewLayer" aria-hidden="true">
+    <div class="preview" data-target="p-1" role="dialog" aria-modal="true" aria-label="Crystal Crown NC Black details">
+      <span class="close-btn" data-close aria-label="Close"><i class="fas fa-times" aria-hidden="true"></i></span>
+      <img src="images/0004_crystal-crown-n.c-black-1024x1024.png" alt="Crystal Crown NC Black Ceiling Fan" class="billo">
+      <h3>Crystal Crown NC Black</h3>
+      <div class="stars">
+        <i class="fas fa-star" aria-hidden="true"></i>
+        <i class="fas fa-star" aria-hidden="true"></i>
+        <i class="fas fa-star" aria-hidden="true"></i>
+        <i class="fas fa-star" aria-hidden="true"></i>
+        <i class="fas fa-star-half-alt" aria-hidden="true"></i>
+        <span>(250)</span>
+      </div>
+      <p>Color: Black<br>Size: 48″, 56″<br>Available in Conventional Motor and Hybrid Econo Power.</p>
+      <div class="price">14,000 PKR</div>
+      <div class="buttons">
+        <a href="checkout.html" class="buy">Buy now</a>
+        <a href="#" class="cart">Add to cart</a>
+      </div>
+    </div>
+
+<div class="preview" data-target="p-2" role="dialog" aria-modal="true" aria-label="Crystal Crown NC Silver details">
+      <span class="close-btn" data-close aria-label="Close"><i class="fas fa-times" aria-hidden="true"></i></span>
+      <img src="images/0000_crystal-crown-t.wood_-1024x1024 copy.png" alt="Crystal Crown NC Silver Ceiling Fan" class="billo">
+      <h3>Crystal Crown NC wood</h3>
+      <div class="stars">
+        <i class="fas fa-star" aria-hidden="true"></i>
+        <i class="fas fa-star" aria-hidden="true"></i>
+        <i class="fas fa-star" aria-hidden="true"></i>
+        <i class="fas fa-star" aria-hidden="true"></i>
+        <i class="fas fa-star-half-alt" aria-hidden="true"></i>
+        <span>(250)</span>
+      </div>
+      <p>Color: Brown<br>Size: 48″, 56″<br>Available in Conventional Motor and Hybrid Econo Power.</p>
+      <div class="price">14,000 PKR</div>
+      <div class="buttons">
+        <a href="checkout.html" class="buy">Buy now</a>
+        <a href="#" class="cart">Add to cart</a>
+      </div>
+    </div>
+
+     <div class="preview" data-target="p-3" role="dialog" aria-modal="true" aria-label="Crystal Crown NC Silver details">
+      <span class="close-btn" data-close aria-label="Close"><i class="fas fa-times" aria-hidden="true"></i></span>
+      <img src="images/0003_crystal-crown-n.c-silver-1024x1024.png" alt="Crystal Crown NC Silver Ceiling Fan" class="billo">
+      <h3>Crystal Crown NC Silver</h3>
+      <div class="stars">
+        <i class="fas fa-star" aria-hidden="true"></i>
+        <i class="fas fa-star" aria-hidden="true"></i>
+        <i class="fas fa-star" aria-hidden="true"></i>
+        <i class="fas fa-star" aria-hidden="true"></i>
+        <i class="fas fa-star-half-alt" aria-hidden="true"></i>
+        <span>(250)</span>
+      </div>
+      <p>Color: Silver<br>Size: 48″, 56″<br>Available in Conventional Motor and Hybrid Econo Power.</p>
+      <div class="price">14,000 PKR</div>
+      <div class="buttons">
+        <a href="checkout.html" class="buy">Buy now</a>
+        <a href="#" class="cart">Add to cart</a>
+      </div>
+    </div>
+
+    <div class="preview" data-target="p-4" role="dialog" aria-modal="true" aria-label="Mega Bracket details">
+      <span class="close-btn" data-close aria-label="Close"><i class="fas fa-times" aria-hidden="true"></i></span>
+      <img src="images/Mega.png" alt="Mega Bracket Fan">
+      <h3>Mega Bracket</h3>
+      <div class="stars">
+        <i class="fas fa-star" aria-hidden="true"></i>
+        <i class="fas fa-star" aria-hidden="true"></i>
+        <i class="fas fa-star" aria-hidden="true"></i>
+        <i class="fas fa-star" aria-hidden="true"></i>
+        <i class="fas fa-star-half-alt" aria-hidden="true"></i>
+        <span>(250)</span>
+      </div>
+      <p>Color: Black, Silver<br>Size: 24″<br>Top-quality genuine product.</p>
+      <div class="price">12,000 PKR</div>
+      <div class="buttons">
+       <a href="checkout.html" class="buy">Buy now</a>
+        <a href="#" class="cart">Add to cart</a>
+      </div>
+    </div>
+
+    <div class="preview" data-target="p-5" role="dialog" aria-modal="true" aria-label="NC Special Bracket details">
+      <span class="close-btn" data-close aria-label="Close"><i class="fas fa-times" aria-hidden="true"></i></span>
+      <img src="images/0001_n.c-special-1024x1024.png" alt="NC Special Bracket Fan">
+      <h3>NC Special Bracket</h3>
+      <div class="stars">
+        <i class="fas fa-star" aria-hidden="true"></i>
+        <i class="fas fa-star" aria-hidden="true"></i>
+        <i class="fas fa-star" aria-hidden="true"></i>
+        <i class="fas fa-star" aria-hidden="true"></i>
+        <i class="fas fa-star-half-alt" aria-hidden="true"></i>
+        <span>(250)</span>
+      </div>
+      <p>Color: Black, Silver<br>Size: 24″<br>Top-quality genuine product.</p>
+      <div class="price">18,000 PKR</div>
+      <div class="buttons">
+       <a href="checkout.html" class="buy">Buy now</a>
+        <a href="#" class="cart">Add to cart</a>
+      </div>
+    </div>
+
+    <div class="preview" data-target="p-6" role="dialog" aria-modal="true" aria-label="Ceiling Exhaust details">
+      <span class="close-btn" data-close aria-label="Close"><i class="fas fa-times" aria-hidden="true"></i></span>
+      <img src="images/Ceiling-Exhaust-1024x1024.png" alt="Ceiling Exhaust Fan">
+      <h3>Ceiling Exhaust</h3>
+      <div class="stars">
+        <i class="fas fa-star" aria-hidden="true"></i>
+        <i class="fas fa-star" aria-hidden="true"></i>
+        <i class="fas fa-star" aria-hidden="true"></i>
+        <i class="fas fa-star" aria-hidden="true"></i>
+        <i class="fas fa-star-half-alt" aria-hidden="true"></i>
+        <span>(250)</span>
+      </div>
+      <p>Color: Silver<br>Size: 48″, 56″<br>Available in Conventional Motor and Hybrid Econo Power.</p>
+      <div class="price">10,000 PKR</div>
+      <div class="buttons">
+       <a href="checkout.html" class="buy">Buy now</a>
+        <a href="#" class="cart">Add to cart</a>
+      </div>
+    </div>
+
+   
+
+    <div class="preview" data-target="p-7" role="dialog" aria-modal="true" aria-label="Industrial Metal Exhaust details">
+      <span class="close-btn" data-close aria-label="Close"><i class="fas fa-times" aria-hidden="true"></i></span>
+      <img src="images/industrial-metal-exhaust-1024x1024.png" alt="Industrial Metal Exhaust Fan">
+      <h3>Industrial Metal Exhaust</h3>
+      <div class="stars">
+        <i class="fas fa-star" aria-hidden="true"></i>
+        <i class="fas fa-star" aria-hidden="true"></i>
+        <i class="fas fa-star" aria-hidden="true"></i>
+        <i class="fas fa-star" aria-hidden="true"></i>
+        <i class="fas fa-star-half-alt" aria-hidden="true"></i>
+        <span>(250)</span>
+      </div>
+      <p>Color: Golden<br>Size: 18″, 24″<br>Durable and efficient, designed for optimal industrial ventilation.</p>
+      <div class="price">11,000 PKR</div>
+      <div class="buttons">
+        <a href="checkout.html" class="buy">Buy now</a>
+        <a href="#" class="cart">Add to cart</a>
+      </div>
+    </div>
+
+  <div class="preview" data-target="p-8" role="dialog" aria-modal="true" aria-label="Plastic Exhaust details">
+      <span class="close-btn" data-close aria-label="Close"><i class="fas fa-times" aria-hidden="true"></i></span>
+      <img src="images/plastic-exhaust-offwhite-1024x1024.png" alt="Ceiling Exhaust Fan">
+      <h3>Plastic Exhaust</h3>
+      <div class="stars">
+        <i class="fas fa-star" aria-hidden="true"></i>
+        <i class="fas fa-star" aria-hidden="true"></i>
+        <i class="fas fa-star" aria-hidden="true"></i>
+        <i class="fas fa-star" aria-hidden="true"></i>
+        <i class="fas fa-star-half-alt" aria-hidden="true"></i>
+        <span>(250)</span>
+      </div>
+      <p>Color: white<br>Size: 48″, 56″<br>Available in Conventional Motor and Hybrid Econo Power.</p>
+      <div class="price">10,000 PKR</div>
+      <div class="buttons">
+        <a href="checkout.html" class="buy">Buy now</a>
+        <a href="#" class="cart">Add to cart</a>
+      </div>
+    </div>
+  </div>
+<div  id="about" style="height: 10%; margin: 5px;"></div>
+<br style="height: 5%;"><br><br><br>
+<section>
+  <br>
+ 
+  <div class="container about-section" >
+  <!-- Image on left -->
+  <div class="image-section">
+    <img src="images/aboutus.jpg" alt="Business Meeting">
+  </div>
+
+  <!-- Text on right -->
+  <div class="content-section">
+    <h2 class="section-title">About Our Company</h2>
+    <p>
+      At <b>FAN O FAN</b>, we believe that a fan is more than just a home appliance — it’s a lifestyle element. 
+      With a passion for innovation, comfort, and modern design, we are proud to be <b>Pakistan’s First Designer Fan </b> Company, 
+      creating fans that not only cool your space but also elevate it.
+    </p>
+    <p>
+      For years, our goal has been simple: bring premium airflow, elegant aesthetics, and energy-saving technology into every home.
+    </p>
+
+    <!-- Icons -->
+    <div class="icon-section">
+      <div class="icon-item">
+        <i class="fas fa-star"></i>
+        <p>Vision</p>
+      </div>
+      <div class="icon-item">
+        <i class="fas fa-medal"></i>
+        <p>Our Promise</p>
+      </div>
+      <div class="icon-item">
+        <i class="fas fa-bullseye"></i>
+        <p>Goals</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+
+
+
+
+  <div class="fanofan-row">
+
+    <!-- VIDEO CARD -->
+    <div class="fanofan-card fanofan-video-card">
+      <img class="fanofan-thumbnail" src="images/836a951b-a917-45b1-840f-fc6b3fd7533e.jpg" alt="FanOFan video thumbnail"
+        onclick="document.getElementById('fanofan-iframe').style.display='block'; 
+                  this.style.display='none'; 
+                  document.getElementById('fanofan-play').style.display='none';">
+
+      <div class="fanofan-play-button" id="fanofan-play" onclick="document.getElementById('fanofan-iframe').style.display='block'; 
+                  document.querySelector('.fanofan-thumbnail').style.display='none'; 
+                  this.style.display='none';">
+
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 20">
+          <path d="M3.5 1.8C2.7 1.3 1.6 1.9 1.6 2.9v13.9c0 1 1 1.6 1.8 1.1l12.3-7c.8-.5.8-1.7 0-2.2L3.5 1.8z" />
+        </svg>
+      </div>
+
+      <iframe id="fanofan-iframe" class="fanofan-iframe"
+        src="https://www.youtube.com/embed/TgIpK0vBjxs?autoplay=1&rel=0&modestbranding=1" allowfullscreen></iframe>
+    </div>
+
+    <!-- CONTENT CARD -->
+    <div class="fanofan-card fanofan-content-card">
+      <img class="fanofan-logo" src="images/93023419-eb09-4c06-a5b5-0c3bec813f27-removebg-preview.png" alt="FanOFan logo">
+
+      <div class="fanofan-title">Stylish Fan For Every Room</div>
+
+      <div class="fanofan-description">
+        Upgrade your room with <b>FanOFan Deluxe Fans</b> where comfort meets elegance.<br>
+        Energy-saving technology keeps your bills low while breezes stay strong. <br>
+        Sleek, modern designs fit perfectly in every room. <br>
+        Whisper-quiet motors let you relax without distraction. <br>
+        Durable premium build ensures long-lasting performance. <br>
+      </div>
+
+      <a class="fanofan-button" href="checkout.html">
+        Buy Now
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6 8">
+          <path d="M0 1.2L2.8 4 0 6.8 1.2 8 5.2 4 1.2 0 0 1.2Z" />
+        </svg>
+      </a>
+    </div>
+
+  </div >
+<br id="test1">
+<div  id="test" style="height: 20%;"><br style="margin: 20px;"></div>
+<br style="height: 20px;"><br>
+  <section class="testimonial" >
+    <h2 class="testimonial__title" id="test">WHAT CUSTOMERS SAY</h2>
+    <div class="testimonial__swiper container swiper">
+      <div class="swiper-wrapper">
+        <article class="testimonial__card swiper-slide">
+          <img src="https://www.biz.uiowa.edu/ama/wp-content/uploads/sites/16/2024/10/sydcircle-1-1024x1024.png" alt="image" class="testimonial__img">
+
+          <h3 class="testimonial__name">Ayesha Khan</h3>
+
+          <div class="testimonial__rating">
+            <div class="testimonial__stars">
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+            </div>
+
+            <h3 class="testimonial__number">5.0</h3>
+          </div>
+
+          <p class="testimonial__description">
+           The Stealth Voice BLDC+ fan has transformed the comfort level of our office. The airflow is powerful yet silent, and the build quality feels premium. Highly recommended for anyone upgrading their workspace.
+          </p>
+        </article>
+
+        <article class="testimonial__card swiper-slide">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxC1Vt7j1OblAe_lGmBkqRfY4KwF5H2s-kfg&s" alt="image" class="testimonial__img">
+
+          <h3 class="testimonial__name">Mohammad Saad</h3>
+
+          <div class="testimonial__rating">
+            <div class="testimonial__stars">
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+            </div>
+
+            <h3 class="testimonial__number">5.0</h3>
+          </div>
+
+          <p class="testimonial__description">
+            FanO Fan products deliver exceptional performance. We installed the Galaxy Prime ceiling fan in our living area, and the energy efficiency alone makes it worth it. Smooth operation, modern design
+          </p>
+        </article>
+
+        <article class="testimonial__card swiper-slide">
+          <img src="https://careworldimmigration.com/wp-content/uploads/2025/04/rahul.png" alt="image" class="testimonial__img">
+
+          <h3 class="testimonial__name">Farhan Ali</h3>
+
+          <div class="testimonial__rating">
+            <div class="testimonial__stars">
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+            </div>
+
+            <h3 class="testimonial__number">5.0</h3>
+          </div>
+
+          <p class="testimonial__description">
+           Outstanding durability and excellent customer support. The BLDC technology truly saves on electricity costs, and the smart features work flawlessly. A reliable choice for long-term use.
+          </p>
+        </article>
+
+        <article class="testimonial__card swiper-slide">
+          <img src="https://www.biz.uiowa.edu/ama/wp-content/uploads/sites/16/2024/10/sydcircle-1024x1024.png" alt="image" class="testimonial__img">
+
+          <h3 class="testimonial__name">Sara Ahmed</h3>
+
+          <div class="testimonial__rating">
+            <div class="testimonial__stars">
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+            </div>
+
+            <h3 class="testimonial__number">5.0</h3>
+          </div>
+
+          <p class="testimonial__description">
+            We chose FanO Fan for our new showroom, and the feedback from customers has been fantastic. The air
+            delivery, noise control, and overall performance stand out compared to traditional fans.
+          </p>
+        </article>
+      </div>
+
+      
+
+      <!-- Pagination -->
+      <div class="swiper-pagination"></div>
+
+      <!-- Navigation buttons -->
+      <div class="swiper-button-prev"><i class="ri-arrow-left-long-line"></i></div>
+      <div class="swiper-button-next"><i class="ri-arrow-right-long-line"></i></div>
+    </div>
+  </section>
+
+
+  <!-- =========================
+      FOOTER SECTION
+========================= -->
+<footer class="footer" id="contact">
+  <div class="footer-container">
+
+    <!-- Logo + Description -->
+    <div class="footer-about">
+      <img src="images/93023419-eb09-4c06-a5b5-0c3bec813f27-removebg-preview.png" alt="Lahore Fans Logo" class="footer-logo">
+      <p class="footer-description">
+        We are first designers and manufacturers of most original and unique designs in the third generation of fan manufacturing.
+      </p>
+      <div class="footer-call">
+        <i class="fas fa-headphones"></i>
+        <span>CALL US: 9AM TO 5PM<br>+92 317218511</span>
+      </div>
+    </div>
+
+    <!-- Useful Links -->
+    <div class="footer-links">
+      <h3>Useful Links</h3>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Shop</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Categories -->
+    <div class="footer-links">
+      <h3>Categories</h3>
+      <ul>
+        <li><a href="#">Bracket Fan</a></li>
+        <li><a href="#">Ceiling Fan</a></li>
+        <li><a href="#">Exhaust Fan</a></li>
+        <li><a href="#">Pedestal Fan</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact Us -->
+    <div class="footer-contact">
+      <h3>Contact Us</h3>
+      <p>+92 317218511</p>
+      <p>fanofan@gmail.com</p>
+      <p> Office no 108 <br> Fan-O-Fans - Sadar , <br> Karachi Sindh Pakistan</p>
+      <div class="footer-social">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom -->
+  <div class="footer-bottom">
+    <p>Copyright © 2025 Lahore Fans – All Rights Reserved. Developed by Rex Technologies.</p>
+  </div>
+</footer>
+
+    
+
+    <script src="app.js"></script>
+     <script src="assets/js/swiper-bundle.min.js"></script>
+
+  <!--=============== MAIN JS ===============-->
+  <script src="assets/js/main.js"></script>
+
+</body>
+</html>

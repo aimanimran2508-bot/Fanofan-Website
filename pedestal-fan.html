@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Padestal Fan</title>
+
+
+    
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+
+  <link rel="stylesheet" href="card.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --color-primary: #001739;
+    --color-secondary: #0d47a1;
+    --color-tertiary: #003578;
+    --color-background: #f0f2f5;
+    --color-text-light: #ddd;
+    --color-text-white: #fff;
+    --color-accent: #27ae60;
+
+    --spacing-s: 6px;
+    --spacing-m: 10px;
+    --spacing-l: 20px;
+    --spacing-xl: 28px;
+
+    --radius-s: 6px;
+    --radius-m: 10px;
+    --radius-pill: 24px;
+
+    /* 3D Card Variables */
+    --card-width: 200px;
+    --card-height: 300px;
+    --card-transition-duration: 800ms;
+    --card-transition-easing: ease;
+     --accent: #072449;
+      --muted: #6b7c92;
+      --icon-bg: #e0e4ea; 
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none; 
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--color-background);
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* -----------------------------
+   TOP HEADER
+----------------------------- */
+.top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2px 6%;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.top-header.hidden {
+    opacity: 0;
+    transform: translateY(-20px);
+    pointer-events: none; /* Prevent clicking when hidden */
+}
+
+/* LOGO */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.logo img {
+    height: 60px;
+    transition: height 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.logo .brand {
+    font-size: 24px;
+    font-weight: 700;
+    color: #324b6b;
+}
+
+/* INFO BLOCKS */
+.info-box {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    display: none; /* Hidden on small screens by default, visible on lg via media query if needed */
+}
+@media(min-width: 768px) {
+    .info-box { display: flex; }
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 25px;
+    border-right: 1px solid #ccc;
+}
+
+.info-item:last-child {
+    border-right: none;
+}
+
+.info-item i {
+    font-size: 26px;
+    color: #032b5b;
+}
+
+.info-text {
+    font-size: 14px;
+    color: #032b5b;
+    line-height: 1.3;
+}
+
+/* QUOTE BUTTON */
+.quote-btn {
+    padding: 12px 28px;
+    border: 2px solid #032b5b;
+    border-radius: 6px;
+    font-weight: 600;
+    background: none;
+    color: #032b5b;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.quote-btn:hover {
+    background: #032b5b;
+    color: white;
+}
+
+
+/* -----------------------------
+   NAVBAR
+----------------------------- */
+/* Normal navbar */
+.navbar {
+    background: #001739;
+    padding: 8px 6%; /* optional: can reduce if sticky */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    position: relative;
+    width: 100%; /* make it full width */
+    box-sizing: border-box; /* include padding in width */
+    z-index: 1001; 
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    flex-wrap: wrap;
+}
+
+.navbar-left a, .dropbtn {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    position: relative;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    transition: color 0.3s ease;
+}
+
+.navbar-left a:hover, .dropbtn:hover {
+    color: #ffcc00;
+}
+
+.navbar-left span {
+    color: #8293ab;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+.navbar-right i {
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+.navbar-right i:hover {
+    color: #ffcc00;
+    transform: scale(1.1);
+}
+
+.cart-icon {
+    position: relative;
+}
+
+.cart-icon span {
+    position: absolute;
+    top: -7px;
+    right: -10px;
+    background: #ff2b55;
+    color: #fff;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    font-size: 11px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Sticky navbar full width */
+.navbar.sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw; /* full viewport width */
+    padding: 12px 6%; /* optional: smaller padding on sticky */
+    z-index: 9999;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    animation: slideDown 0.5s ease forwards;
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-100%); }
+  to   { transform: translateY(0); }
+}
+
+/* Dropdown */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #ffffff;
+  min-width: 200px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+  border-radius: 6px;
+  overflow: hidden;
+  z-index: 1002;
+  animation: fadeDown 0.3s ease forwards;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content a {
+  padding: 12px 16px;
+  display: block;
+  color: #ddd;
+}
+
+.dropdown-content a:hover {
+  background: #0d47a1;
+  color: #fff;
+  transform: translateX(6px);
+}
+
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+ .navbar-left a,
+    .dropbtn {
+      color: white;
+      font-size: 15px;
+      font-weight: 500;
+      padding: 6px 10px;
+      transition: color 0.3s ease;
+    }
+
+    .navbar-left a:hover,
+    .dropbtn:hover {
+      color: #ffcc00;
+    }
+
+
+    
+    /* Dropdown */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+      z-index: 1000;
+
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: var(--color-primary);
+      min-width: 200px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+      border-radius: 6px;
+      overflow: hidden;
+      animation: fadeDown 0.3s ease forwards;
+      margin-top: 2px;
+
+    }
+
+    .dropbtn {
+      color: white;
+      font-size: 15px;
+      font-weight: 500;
+      padding: 6px 10px;
+      transition: color 0.3s ease;
+      background-color: transparent;
+      box-shadow: none;
+      border-radius: none;
+    }
+
+    .dropbtn:hover {
+      color: #ffcc00;
+    }
+
+    .dropdown-content a {
+      color: #ddd;
+      padding: 12px 16px;
+      display: block;
+      transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    }
+
+    .dropdown-content a:hover {
+      background: var(--color-secondary);
+      color: #fff;
+      transform: translateX(6px);
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+
+    .swiper-button-prev i,
+.swiper-button-next i{
+  color: white;
+
+}
+
+.fanofan-image-banner {
+  position: relative;
+  height: 70vh; /* half of viewport height */
+  overflow: hidden;
+}
+
+.fanofan-banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* image fills container proportionally */
+  display: block;
+}
+
+  .fanofan-image-banner{
+    margin-top: 10px;
+  }
+
+
+
+  
+.card-img {
+    width: 100%;
+    height: 23rem;
+    
+}
+
+
+.card {
+    position: relative;
+    width: 22rem;   /* wider */
+    height: 34rem;  /* taller */
+    background-color: var(--primary);
+    color: #18253c;
+    border-radius: 1rem;
+    border: .1rem solid transparent;
+    overflow: hidden;
+    box-shadow: 0 .3rem .8rem #0003;
+    transition: .5s ease-in-out;
+}
+
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: transparent;
+    }
+
+    .feature-strip {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 30px 0;
+      max-width: 1200px;
+      margin: 0 auto;
+      border-top: 1px solid #d0d5dc;
+      border-bottom: 1px solid #d0d5dc;
+    }
+
+    .feature-item {
+      flex: 1;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    .feature-item:not(:last-child) {
+      border-right: 1px solid #d0d5dc;
+    }
+
+    .feature-icon {
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 14px;
+      border-radius: 50%;
+      background: var(--icon-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+    }
+
+    .feature-icon svg {
+      width: 36px;
+      height: 36px;
+      stroke-width: 2;
+    }
+
+    .feature-title {
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin: 0;
+    }
+
+    .feature-subtitle {
+      font-size: 1.1rem;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    @media (max-width: 768px) {
+      .feature-strip {
+        flex-direction: column;
+        border: none;
+      }
+      .feature-item {
+        border-right: none;
+        border-bottom: 1px solid #d0d5dc;
+        padding: 20px 0;
+      }
+      .feature-item:last-child {
+        border-bottom: none;
+      }
+    }
+
+
+    .feature-strip {
+  border-top: 2px solid #d0d5dc;
+  border-bottom: 2px solid #d0d5dc;
+}
+
+.feature-item:not(:last-child) {
+  border-right: 2px solid #d0d5dc;
+}
+
+.feature-item {
+  flex: 1;
+  text-align: center;
+  padding: 0 20px;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.feature-item:not(:last-child) {
+  border-right: 2px solid #d0d5dc;
+}
+
+/* Hover effect: block moves up */
+.feature-item:hover {
+  transform: translateY(-6px); /* lifts the whole block */
+  border-right: 2px solid #d0d5dc; /* optional: line changes to accent */
+}
+
+/* Optional: also change top/bottom strip lines on hover */
+/* .feature-strip:hover {
+  border-top: 2px solid #d0d5dc;
+  border-bottom: 2px solid #d0d5dc;
+} */
+
+
+    </style>
+</head>
+<body>
+    
+
+     <div class="top-header">
+    <div class="logo">
+      <img src="new-logo.png" alt="Logo">
+      <div class="brand"></div>
+    </div>
+    <div class="info-box">
+      <div class="info-item">
+        <i class="fas fa-phone"></i>
+        <div class="info-text"><strong>Contact:</strong><br>0317218511</div>
+      </div>
+      <div class="info-item">
+        <i class="fas fa-envelope"></i>
+        <div class="info-text"><strong>Mail us:</strong><br>fanofancompany@gmail.com</div>
+      </div>
+    </div>
+        <button onclick="location.href='checkout.html'" class="quote-btn">SHOP NOW</button>
+  </div>
+<div class="navbar">
+    <div class="navbar-left">
+      <a href="index.html">HOME</a>
+      <span>/</span>
+
+
+ <div class="dropdown">
+  <a>SHOP <i class="fa fa-caret-down"></i></a>
+  <div class="dropdown-content">
+    <a href="ceiling-fan.html">Ceiling Fans</a>
+    <a href="pedestal-fan.html">Pedestal Fans</a>
+    <a href="exhaust-fan.html">Exhaust Fans</a>
+    <a href="bracket-fan.html">Bracket Fans</a>
+  </div>
+</div>
+
+      <span>/</span>
+      <a href="">ABOUT US</a>
+      <span>/</span>
+      <a href="#gallery1">GALLERY</a>
+      <span>/</span>
+      <a href="#test">TESTIMONIALS</a>
+      <span>/</span>
+      <a href="#contact">CONTACT US</a>
+    </div>
+
+
+    <div class="navbar-right">
+      <i class="fab fa-facebook-f"></i>
+      <i class="fab fa-twitter"></i>
+      <i class="fab fa-linkedin-in"></i>
+      <i class="fab fa-pinterest"></i>
+      <div class="cart-icon"><i class="fas fa-cart-shopping"></i><span>2</span></div>
+      <i class="fas fa-search"></i>
+    </div>
+  </div>
+
+
+  <!-- Image Banner -->
+<section class="fanofan-image-banner">
+  <img src="https://yashica.com.pk/wp-content/uploads/2023/12/Home-Page-Banner-Fans.jpg" alt="FanOFan Banner" class="fanofan-banner-img">
+  </section>
+
+
+
+
+<h2 class="best-sellers-heading">Signature Collection</h2>
+
+
+
+ <section class="slider">
+        <div class="card">
+            <div class="card-content">
+                <img src="imagecard/download.png" alt="" class="card-img">
+                <h1 class="card-title">Crystal Crown Fan</h1>
+                <div class="card-body">
+                    <div class="card-star">
+                        <span class="rating-value">4.5</span>
+                        <span class="star">&#9733;</span>
+                    </div>
+                    <p class="card-price">Rs25,000</p>
+                </div>
+                <div class="card-footer">
+                
+                    <button  onclick="window.location='product9.html'" class="btn btn-border">Read More</button>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                <img src="imagecard/download (1).png" alt="" class="card-img">
+                <h1 class="card-title">AeroFlow Max Fan</h1>
+                <div class="card-body">
+                    <div class="card-star">
+                        <span class="rating-value">4</span>
+                        <span class="star">&#9733;</span>
+                    </div>
+                    <p class="card-price">Rs25,000</p>
+                </div>
+                <div class="card-footer">
+                    
+                    <button onclick="window.location='product10.html'" class="btn btn-border">Read More</button>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                <img src="imagecard/download (2).png" alt="" class="card-img">
+                <h1 class="card-title">WindCrest Ultra Fan</h1>
+                <div class="card-body">
+                    <div class="card-star">
+                        <span class="rating-value">4.6</span>
+                        <span class="star">&#9733;</span>
+                    </div>
+                    <p class="card-price">Rs20,000</p>
+                </div>
+                <div class="card-footer">
+
+                    <button onclick="window.location='product11.html'"  class="btn btn-border">Read More</button>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                <img src="imagecard/download (3).png" alt="" class="card-img">
+                <h1 class="card-title">CoolBreeze Elite Fan</h1>
+                <div class="card-body">
+                    <div class="card-star">
+                        <span class="rating-value">4.7</span>
+                        <span class="star">&#9733;</span>
+                    </div>
+                    <p class="card-price">Rs25,000</p>
+                </div>
+                <div class="card-footer">
+                
+                    <button onclick="window.location='product12.html'" class="btn btn-border">Read More</button>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                <img src="imagecard/download (5).png" alt="" class="card-img">
+                <h1 class="card-title">SilentAir Pro Fan</h1>
+                <div class="card-body">
+                    <div class="card-star">
+                        <span class="rating-value">4.5</span>
+                        <span class="star">&#9733;</span>
+                    </div>
+                    <p class="card-price">Rs20,000</p>
+                </div>
+                <div class="card-footer">
+                    
+                    <button onclick="window.location='product13.html'" class="btn btn-border">Read More</button>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                <img src="https://lahorefan.com/wp-content/uploads/2023/02/0001_n.c-special-600x600.png" alt="" class="card-img">
+                <h1 class="card-title">SwiftFlow Turbo Fan</h1>
+                <div class="card-body">
+                    <div class="card-star">
+                        <span class="rating-value">4.4</span>
+                        <span class="star">&#9733;</span>
+                    </div>
+                    <p class="card-price">Rs25,000</p>
+                </div>
+                <div class="card-footer">
+                   
+                    <button onclick="window.location='product14.html'"  class="btn btn-border">Read More</button>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                <img src="imagecard/download (6).png" alt="" class="card-img">
+                <h1 class="card-title">ComfortWind 360 Fan</h1>
+                <div class="card-body">
+                    <div class="card-star">
+                        <span class="rating-value">4.5</span>
+                        <span class="star">&#9733;</span>
+                    </div>
+                    <p class="card-price">Rs20,000</p>
+                </div>
+                <div class="card-footer">
+                    
+                    <button onclick="window.location='product15.html'"  class="btn btn-border">Read More</button>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                <img src="imagecard/download (7).png" alt="" class="card-img">
+                <h1 class="card-title">AirNova Prime Fan</h1>
+                <div class="card-body">
+                    <div class="card-star">
+                        <span class="rating-value">4.4</span>
+                        <span class="star">&#9733;</span>
+                    </div>
+                    <p class="card-price">Rs25,000</p>
+                </div>
+                <div class="card-footer">
+                   
+                    <button onclick="window.location='product16.html'"  class="btn btn-border">Read More</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    
+  <section class="feature-strip">
+    <div class="feature-item">
+      <div class="feature-icon">
+        <!-- Truck icon -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M1 3h14v13H1z"></path>
+          <path d="M15 8h4l3 3v5"></path>
+          <circle cx="6.5" cy="18.5" r="1.5"></circle>
+          <circle cx="18.5" cy="18.5" r="1.5"></circle>
+        </svg>
+      </div>
+      <h2 class="feature-title">Nationwide Shipping</h2>
+      <p class="feature-subtitle">We deliver securely to every city across Pakistan.</p>
+    </div>
+
+    <div class="feature-item">
+      <div class="feature-icon">
+        <!-- Check icon -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 6L9 17l-5-5"></path>
+        </svg>
+      </div>
+      <h2 class="feature-title">Money-Back Guarantee</h2>
+      <p class="feature-subtitle">Full refund within 30 days if you’re not satisfied.</p>
+    </div>
+
+    <div class="feature-item">
+      <div class="feature-icon">
+        <!-- Headset icon -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 13a9 9 0 0 1 18 0v4"></path>
+          <path d="M3 20v-3a2 2 0 0 1 2-2h.5v5H5a1 1 0 0 1-1-0z"></path>
+          <path d="M21 20v-3a2 2 0 0 0-2-2h-.5v5H19a1 1 0 0 0 1-0z"></path>
+        </svg>
+      </div>
+      <h2 class="feature-title">Online Support 24/7</h2>
+      <p class="feature-subtitle">Technical assistance available any time, day or night.</p>
+    </div>
+
+    <div class="feature-item">
+      <div class="feature-icon">
+        <!-- Wallet icon -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="6" width="20" height="12" rx="2" ry="2"></rect>
+          <circle cx="18" cy="12" r="1.2"></circle>
+        </svg>
+      </div>
+      <h2 class="feature-title">Cash on Delivery</h2>
+      <p class="feature-subtitle">Pay when it arrives — COD available nationwide.</p>
+    </div>
+  </section>
+
+
+
+
+  <!-- =========================
+      FOOTER SECTION
+========================= -->
+<footer class="footer">
+  <div class="footer-container">
+
+    <!-- Logo + Description -->
+    <div class="footer-about">
+      <img src="new-logo.png" alt="Lahore Fans Logo" class="footer-logo">
+      <p class="footer-description">
+        We are first designers and manufacturers of most original and unique designs in the third generation of fan manufacturing.
+      </p>
+      <div class="footer-call">
+        <i class="fas fa-headphones"></i>
+        <span>CALL US: 9AM TO 5PM<br>+92 317218511</span>
+      </div>
+    </div>
+
+    <!-- Useful Links -->
+    <div class="footer-links">
+      <h3>Useful Links</h3>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Shop</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Categories -->
+    <div class="footer-links">
+      <h3>Categories</h3>
+      <ul>
+        <li><a href="#">Bracket Fan</a></li>
+        <li><a href="#">Ceiling Fan</a></li>
+        <li><a href="#">Exhaust Fan</a></li>
+        <li><a href="#">Pedestal Fan</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact Us -->
+    <div class="footer-contact">
+      <h3>Contact Us</h3>
+      <p>+92 317218511</p>
+      <p>fanofan@gmail.com</p>
+      <p> Office no 108 <br> Fan-O-Fans - Sadar , <br> Karachi Sindh Pakistan</p>
+      <div class="footer-social">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom -->
+  <div class="footer-bottom">
+    <p>Copyright © 2025 Lahore Fans – All Rights Reserved. Developed by Rex Technologies.</p>
+  </div>
+</footer>
+
+
+</body>
+</html>

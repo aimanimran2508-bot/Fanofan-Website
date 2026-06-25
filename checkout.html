@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FanOFan Website</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+     <!-- Font Awesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<!-- GSAP Animation Library (Required for the 3D Slider) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+<script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+
+
+
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+     .navbar-left a,
+    .dropbtn {
+      color: white;
+      font-size: 15px;
+      font-weight: 500;
+      padding: 6px 10px;
+      transition: color 0.3s ease;
+    }
+
+    .navbar-left a:hover,
+    .dropbtn:hover {
+      color: #ffcc00;
+    }
+
+
+    
+    /* Dropdown */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+      z-index: 1000;
+
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: var(--color-primary);
+      min-width: 200px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+      border-radius: 6px;
+      overflow: hidden;
+      animation: fadeDown 0.3s ease forwards;
+      margin-top: 2px;
+
+    }
+
+    .dropbtn {
+      color: white;
+      font-size: 15px;
+      font-weight: 500;
+      padding: 6px 10px;
+      transition: color 0.3s ease;
+      background-color: transparent;
+      box-shadow: none;
+      border-radius: none;
+    }
+
+    .dropbtn:hover {
+      color: #ffcc00;
+    }
+
+    .dropdown-content a {
+      color: #ddd;
+      padding: 12px 16px;
+      display: block;
+      transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    }
+
+    .dropdown-content a:hover {
+      background: var(--color-secondary);
+      color: #fff;
+      transform: translateX(6px);
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+
+    .swiper-button-prev i,
+.swiper-button-next i{
+  color: white;
+
+}
+
+.page-padding { padding: var(--spacing-xl); }
+.checkout-wrapper {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 28px;
+}
+
+/* LEFT CARD */
+.checkout-card {
+  background: #fff;
+  padding: 24px;
+  border-radius: var(--radius-m);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-m);
+}
+
+/* FORM */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 16px;
+}
+.input-group label {
+  font-size: 1.4rem;
+  margin-bottom: 6px;
+  color: var(--color-primary);
+  font-weight: 500;
+}
+.input-group input {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: 1px solid #d6d6d6;
+  font-size: 1.5rem;
+  transition: 0.25s;
+}
+.input-group input:focus {
+  border-color: var(--color-secondary);
+  box-shadow: 0 0 0 3px rgba(13,71,161,0.15);
+  outline: none;
+}
+.full { grid-column: span 2; }
+
+/* PAYMENT METHODS */
+.payment-methods {
+  display: flex;
+  gap: 14px;
+  margin: 16px 0;
+}
+.method {
+  flex: 1;
+  padding: 14px;
+  background: #eef3ff;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: 600;
+  border: 2px solid transparent;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  transition: 0.25s;
+}
+.method.active { border-color: var(--color-secondary); background: #dce8ff; }
+.pay-box {
+  display: none;
+  background: #fafafa;
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+#cod-box { display: block; }
+
+
+
+:root {
+    --color-primary: #001739;
+    --color-secondary: #0d47a1;
+    --color-tertiary: #003578;
+    --color-background: #f0f2f5;
+    --color-text-light: #ddd;
+    --color-text-white: #fff;
+    --color-accent: #27ae60;
+
+    --spacing-s: 6px;
+    --spacing-m: 10px;
+    --spacing-l: 20px;
+    --spacing-xl: 28px;
+
+    --radius-s: 6px;
+    --radius-m: 10px;
+    --radius-pill: 24px;
+
+    /* 3D Card Variables */
+    --card-width: 200px;
+    --card-height: 300px;
+    --card-transition-duration: 800ms;
+    --card-transition-easing: ease;
+}
+
+/* BUTTON */
+.checkout-btn {
+  width: 100%;
+  margin-top: 20px;
+  padding: 16px;
+  background: var(--color-accent);
+  color: #000;
+  border: none;
+  border-radius: 14px;
+  font-size: 1.6rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.checkout-btn:hover { background: var(--color-secondary); color: #fff; }
+
+/* SUMMARY BOX */
+.summary-box {
+  background: #fff;
+  padding: 22px;
+  border-radius: var(--radius-m);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+.summary-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 18px;
+  margin-top: 10px;
+}
+.summary-product {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.summary-product img {
+  width: 70px;
+  height: 70px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+.summary-name { font-size: 1.5rem; font-weight: 600; color: var(--color-primary); }
+.summary-desc { font-size: 1.3rem; color: #666; }
+.summary-line {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.4rem;
+  padding: 6px 0;
+  border-bottom: 1px dashed #eee;
+}
+.summary-line:last-child { border-bottom: none; }
+.summary-line.total {
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: var(--color-secondary); /* fixed */
+  margin-top: 10px;
+}
+.popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-box {
+  background: #fff;
+  padding: 32px;
+  border-radius: 14px;
+  text-align: center;
+  max-width: 400px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  animation: pop 0.4s ease;
+}
+
+.popup-box i {
+  font-size: 3.2rem;
+  color: var(--color-accent);
+  margin-bottom: 12px;
+}
+
+.popup-box h2 {
+  font-size: 2rem;
+  color: var(--color-primary);
+  margin-bottom: 10px;
+}
+
+.popup-box p {
+  font-size: 1.4rem;
+  color: #555;
+  margin-bottom: 18px;
+}
+
+.popup-box button {
+  padding: 12px 24px;
+  background: var(--color-secondary);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.popup-box button:hover {
+  background: var(--color-accent);
+  color: #000;
+}
+
+@keyframes pop {
+  from { opacity: 0; transform: scale(0.9); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+
+.page-padding { 
+  padding: var(--spacing-xl); 
+}
+
+.checkout-wrapper {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 28px;
+}
+
+/* LEFT CARD */
+.checkout-card {
+  background: #fff;
+  padding: 24px;
+  border-radius: var(--radius-m);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-m);
+  margin-top: 15px;
+  left: 30%;
+}
+
+/* FORM */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 16px;
+}
+
+.input-group label {
+  font-size: 1.4rem;
+  margin-bottom: 6px;
+  color: var(--color-primary);
+  font-weight: 500;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: 1px solid #d6d6d6;
+  font-size: 1.5rem;
+  transition: 0.25s;
+}
+
+.input-group input:focus {
+  border-color: var(--color-secondary);
+  box-shadow: 0 0 0 3px rgba(13,71,161,0.15);
+  outline: none;
+}
+
+.full { grid-column: span 2; }
+
+/* PAYMENT METHODS */
+.payment-methods {
+  display: flex;
+  gap: 14px;
+  margin: 16px 0;
+  
+}
+
+.method {
+  flex: 1;
+  padding: 14px;
+  background: #eef3ff;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: 600;
+  border: 2px solid transparent;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  transition: 0.25s;
+  user-select: none;
+  color: #001739;
+}
+
+.method i {
+  font-size: 1.4rem;
+  color: var(--color-secondary);
+}
+
+.method.active { 
+  border-color: var(--color-secondary); 
+  background: #dce8ff; 
+  box-shadow: 0 0 0 3px rgba(13,71,161,0.15);
+}
+
+.pay-box {
+  display: none;
+  background: #fafafa;
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  color: #001739;
+}
+
+#cod-box { display: block; }
+
+/* BUTTON */
+.checkout-btn {
+  width: 100%;
+  margin-top: 20px;
+  padding: 16px;
+  background: var(--color-accent);
+  color: #000;
+  border: none;
+  border-radius: 14px;
+  font-size: 1.6rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.checkout-btn:hover { 
+  background: var(--color-secondary); 
+  color: #fff; 
+}
+
+/* SUMMARY BOX */
+.summary-box {
+  background: #fff;
+  padding: 22px;
+  border-radius: var(--radius-m);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.summary-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 18px;
+}
+
+.summary-product {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.summary-product img {
+  width: 70px;
+  height: 70px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.summary-name { 
+  font-size: 1.5rem; 
+  font-weight: 600; 
+  color: var(--color-primary); 
+}
+
+.summary-desc { 
+  font-size: 1.3rem; 
+  color: #666; 
+}
+
+.summary-line {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.4rem;
+  padding: 6px 0;
+  border-bottom: 1px dashed #eee;
+  color: #001739;
+}
+
+.summary-line:last-child { border-bottom: none; }
+
+.summary-line.total {
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: var(--color-secondary);
+  margin-top: 10px;
+}
+
+
+
+    
+  </style>
+
+
+
+
+</head>
+<body>
+  <!-- TOP HEADER -->
+  <header class="top-header" id="home">
+    <div class="logo">
+      <img src="new-logo.png" alt="Logo">
+      
+    </div>
+
+    <div class="info-box">
+      <div class="info-item">
+        <i class="fas fa-phone"></i>
+        <div class="info-text"><strong>Contact:</strong><br>0317218511</div>
+      </div>
+      <div class="info-item">
+        <i class="fas fa-envelope"></i>
+        <div class="info-text"><strong>Mail us:</strong><br>fanofancompany@gmail.com</div>
+      </div>
+    </div>
+
+       <button onclick="location.href='checkout.html'" class="quote-btn">SHOP NOW</button>
+  </header>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="navbar-left">
+      <a href="index.html">HOME</a><span>/</span>
+
+      <div class="dropdown">
+        <button class="dropbtn">SHOP <i class="fa fa-caret-down"></i></button>
+        <div class="dropdown-content">
+          <a href="ceiling-fan.html">Ceiling Fans</a>
+          <a href="pedestal-fan.html">Pedestal Fans</a>
+          <a href="exhaust-fan.html">Exhaust Fans</a>
+          <a href="bracket-fan.html">Bracket Fans</a>
+        </div>
+      </div>
+
+      <span>/</span><a href="#about">ABOUT US</a>
+      <span>/</span><a href="#gallery">GALLERY</a>
+      <span>/</span><a href="#test1">TESTIMONIALS</a>
+      <span>/</span><a href="#contact">CONTACT US</a>
+    </div>
+
+    <div class="navbar-right">
+      <i class="fab fa-facebook-f"></i>
+      <i class="fab fa-twitter"></i>
+      <i class="fab fa-linkedin-in"></i>
+      <i class="fab fa-pinterest"></i>
+      <div class="cart-icon"><i class="fas fa-cart-shopping"></i><span>2</span></div>
+      <i class="fas fa-search"></i>
+    </div>
+  </nav>
+
+
+
+  <div class="page-padding">
+  <div class="checkout-wrapper">
+
+    <!-- LEFT: Billing + Payment -->
+    <div class="checkout-card">
+      <h2 class="section-title">Billing Information</h2>
+      <div class="form-grid">
+        <div class="input-group"><label>Full Name</label><input type="text" placeholder="Enter your full name"></div>
+        <div class="input-group"><label>Email</label><input type="email" placeholder="example@gmail.com"></div>
+        <div class="input-group"><label>Phone</label><input type="tel" placeholder="03xx-xxxxxxx"></div>
+        <div class="input-group"><label>City</label><input type="text" placeholder="Your city"></div>
+        <div class="input-group"><label>State</label><input type="text" placeholder="Your state"></div>
+        <div class="input-group"><label>ZIP Code</label><input type="text" placeholder="Postal code"></div>
+        <div class="input-group full"><label>Full Address</label><input type="text" placeholder="Complete delivery address"></div>
+      </div>
+
+      <h2 class="section-title">Payment Method</h2>
+      <div class="payment-methods">
+        <div class="method active" onclick="selectMethod('cod', event)">
+          <i class="fa-solid fa-truck"></i> Cash on Delivery
+        </div>
+        <div class="method" onclick="selectMethod('easy', event)">
+          <i class="fa-solid fa-mobile"></i> Easypaisa
+        </div>
+        <div class="method" onclick="selectMethod('card', event)">
+          <i class="fa-solid fa-credit-card"></i> Card Payment
+        </div>
+      </div>
+
+      <!-- Payment Boxes -->
+      <div id="cod-box" class="pay-box">
+        <p>No extra details needed for Cash on Delivery.</p>
+      </div>
+      <div id="easy-box" class="pay-box">
+        <div class="input-group"><label>Easypaisa Number</label><input type="tel" placeholder="03xx-xxxxxxx"></div>
+        <div class="input-group"><label>Sender Name</label><input type="text" placeholder="Full name"></div>
+      </div>
+      <div id="card-box" class="pay-box">
+        <div class="input-group"><label>Card Number</label><input type="text" placeholder="xxxx xxxx xxxx xxxx"></div>
+        <div class="input-group"><label>Cardholder Name</label><input type="text" placeholder="Name as on card"></div>
+        <div class="input-group"><label>Expiry</label><input type="text" placeholder="MM/YY"></div>
+        <div class="input-group"><label>CVV</label><input type="password" placeholder="***"></div>
+      </div>
+
+      <button class="checkout-btn" onclick="confirmOrder()">Place Order</button>
+    </div>
+
+    <!-- RIGHT: Order Summary -->
+    <div class="summary-box">
+      <h3 class="summary-title">Order Summary</h3>
+
+      <!-- Ceiling Fan -->
+      <div class="summary-product">
+        <img src="im2/download (7) copy.png" alt="Ceiling Fan">
+        <div>
+          <div class="summary-name">Ceiling Fan</div>
+          <div class="summary-desc">Modern, High Speed</div>
+        </div>
+      </div>
+      <div class="summary-line"><span>Price</span><span>Rs 10,000</span></div>
+
+      <!-- Exhaust Fan -->
+      <div class="summary-product">
+        <img src="imagecard/download (27).png" alt="Exhaust Fan">
+        <div>
+          <div class="summary-name">Exhaust Fan</div>
+          <div class="summary-desc">Premium, Low Noise</div>
+        </div>
+      </div>
+      <div class="summary-line"><span>Price</span><span>Rs 8,400</span></div>
+
+      <!-- Totals -->
+      <div class="summary-line"><span>Delivery</span><span>Free</span></div>
+      <div class="summary-line"><span>Tax (10%)</span><span>Rs 1,840</span></div>
+      <div class="summary-line total"><span>Total</span><span>Rs 20,240</span></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- POPUP -->
+<div class="popup" id="popup">
+  <div class="popup-box">
+    <i class="fa-solid fa-circle-check"></i>
+    <h2>Order Confirmed</h2>
+    <p>Thank you for shopping with FanOFan! Your order has been placed successfully.</p>
+    <button onclick="closePopup()">Continue Shopping</button>
+  </div>
+</div>
+
+
+  <!-- FOOTER -->
+  <footer class="footer" id="contact">
+    <div class="footer-container">
+      <!-- About -->
+      <div class="footer-about">
+        <img src="new-logo.png" alt="Lahore Fans Logo" class="footer-logo">
+        <p class="footer-description">
+          We are first designers and manufacturers of original and unique designs in fan manufacturing.
+        </p>
+        <div class="footer-call">
+          <i class="fas fa-headphones"></i>
+          <span>CALL US: 9AM TO 5PM<br>+92 317218511</span>
+        </div>
+      </div>
+
+      <!-- Links -->
+      <div class="footer-links">
+        <h3>Useful Links</h3>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Shop</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Categories -->
+      <div class="footer-links">
+        <h3>Categories</h3>
+        <ul>
+          <li><a href="#">Bracket Fan</a></li>
+          <li><a href="#">Ceiling Fan</a></li>
+          <li><a href="#">Exhaust Fan</a></li>
+          <li><a href="#">Pedestal Fan</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div class="footer-contact">
+        <h3>Contact Us</h3>
+        <p>+92 317218511</p>
+        <p>fanofan@gmail.com</p>
+        <p>Office no 108 <br> Fan-O-Fans - Sadar, Karachi Sindh Pakistan</p>
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom -->
+    <div class="footer-bottom">
+      <p>Copyright © 2025 Lahore Fans – All Rights Reserved. Developed by Rex Technologies.</p>
+    </div>
+  </footer>
+
+
+   <script src="app.js"></script>
+     <script src="assets/js/swiper-bundle.min.js"></script>
+
+  <!--=============== MAIN JS ===============-->
+  <script src="assets/js/main.js"></script>
+ 
+
+  <script>
+// Switch payment method
+function selectMethod(method, event) {
+  // remove active class from all
+  document.querySelectorAll('.method').forEach(m => m.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+
+  // hide all pay-boxes
+  document.querySelectorAll('.pay-box').forEach(box => box.style.display = 'none');
+
+  // show selected box
+  document.getElementById(method + '-box').style.display = 'block';
+}
+
+// Confirm order popup
+function confirmOrder() {
+  const popup = document.getElementById('popup');
+  popup.style.display = 'flex';
+}
+
+// Close popup
+function closePopup() {
+  const popup = document.getElementById('popup');
+  popup.style.display = 'none';
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Premium Crystal Crown Fan - FanOFan</title>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        color: #333;
+    }
+
+    .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 40px auto;
+        background: #fff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #324466;
+    position: relative; 
+       /* IMPORTANT: gives a reference for ::after */
+}
+
+h1::after {
+    content: "";
+    position: absolute;
+    left: 20%;
+    bottom: -5px;           /* moves line just below text */
+    width: 0;
+    height: 4px;
+    transform: translateX(-50%);
+    background: #324466;
+    border-radius: 3px;
+    box-shadow: 0 0 2px rgba(13,71,161,.7);
+    transition: width .4s ease;
+}
+
+h1:hover::after {
+    width: 40%;
+
+}
+
+
+    .product-section {
+        display: flex;
+        gap: 40px;
+        flex-wrap: wrap;
+    }
+
+    .product-img img {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        border-radius: 12px;
+        transition: transform 0.3s ease;
+    }
+
+    .product-img img:hover {
+        transform: scale(1.05);
+    }
+
+    .product-info {
+        flex: 1;
+        min-width: 300px;
+    }
+
+    .price {
+        font-size: 28px;
+        color: #e63946;
+        margin: 10px 0;
+        font-weight: bold;
+    }
+
+    .product-info p {
+        margin: 8px 0;
+        font-size: 16px;
+    }
+
+    .availability {
+        font-weight: bold;
+    }
+
+    .availability.in-stock {
+        color: green;
+    }
+
+    .availability.out-stock {
+        color: red;
+    }
+
+    .color-options {
+        margin: 20px 0;
+    }
+
+    .color-btn {
+        width: 35px;
+        height: 35px;
+        display: inline-block;
+        border-radius: 50%;
+        margin-right: 12px;
+        cursor: pointer;
+        border: 2px solid #ccc;
+        transition: all 0.3s;
+    }
+
+    .color-btn:hover {
+        transform: scale(1.2);
+        border-color: #0077b6;
+    }
+
+    .color-btn.active {
+        border: 3px solid #0077b6;
+    }
+
+    .btn {
+        background: #0077b6;
+        color: #fff;
+        border: none;
+        padding: 14px 25px;
+        margin: 10px 10px 10px 0;
+        font-size: 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+        background: #023e8a;
+        transform: scale(1.05);
+    }
+
+    .description {
+        margin-top: 25px;
+        line-height: 1.7;
+    }
+
+    .description h3 {
+        margin-bottom: 12px;
+        color: #0077b6;
+    }
+
+    .specs {
+        margin-top: 35px;
+    }
+
+    .specs h3 {
+        margin-bottom: 15px;
+        color: #324466;
+    }
+
+
+    .specs table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .specs th, .specs td {
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: left;
+        font-size: 15px;
+    }
+
+    .specs th {
+        background: #f0f0f0;
+    }
+
+    @media(max-width: 768px){
+        .product-section {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .product-img img {
+            max-width: 100%;
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>
+
+ComfortWind 360 Pedestal Fan
+
+
+
+
+    </h1>
+
+    <div class="product-section">
+
+        <!-- Product Image -->
+        <div class="product-img">
+            <img id="fanImage" src="https://www.pakfansofficial.com/public/resources/img/4x3/ltcp_black.jpg?ts=20230515070447365365" alt="Ceiling Fan">
+        </div>
+
+        <!-- Product Information -->
+        <div class="product-info">
+            <p class="price">Rs 20,000</p>
+            <p><strong>Availability:</strong> <span class="availability in-stock">In Stock</span></p>
+            <p><strong>Brand:</strong> FanOFan</p>
+            <p><strong>Warranty:</strong> 2 Years</p>
+
+            <!-- Color Select Option -->
+            <div class="color-options">
+                <h4>Select Color:</h4>
+                <span class="color-btn active" style="background:#000000;" onclick="changeColor('black', this)"></span>
+                <span class="color-btn" style="background:#53341c;" onclick="changeColor('brown', this)"></span>
+                <span class="color-btn" style="background:#ffffff;" onclick="changeColor('white', this)"></span>
+            </div>
+
+            <button class="btn">Add to Cart</button>
+            <button onclick="location.href='checkout.html'" class="btn">Buy Now</button>
+
+
+            <div class="description">
+                <h3>Description</h3>
+                <p>
+                   
+ComfortWind 360 offers full-range oscillation and precise speed control to maintain steady airflow. Built with durable materials to ensure long-term performance.
+
+
+
+
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="specs">
+        <h3>Specifications</h3>
+        <table>
+            <tr>
+                <th>Model</th>
+                <td>BreezeMax 1200</td>
+            </tr>
+            <tr>
+                <th>Sweep Size</th>
+                <td>1200 mm</td>
+            </tr>
+            <tr>
+                <th>Motor Speed</th>
+                <td>380 RPM</td>
+            </tr>
+            <tr>
+                <th>Power Consumption</th>
+                <td>60W</td>
+            </tr>
+            <tr>
+                <th>Air Delivery</th>
+                <td>230 m³/min</td>
+            </tr>
+            <tr>
+                <th>Material</th>
+                <td>Aluminium Blades</td>
+            </tr>
+            <tr>
+                <th>Colors</th>
+                <td>White / Brown / Black</td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+
+<script>
+    function changeColor(color, element) {
+        const fanImage = document.getElementById('fanImage');
+        const colors = document.querySelectorAll('.color-btn');
+
+        // Remove active class from all
+        colors.forEach(btn => btn.classList.remove('active'));
+
+        // Add active to clicked
+        element.classList.add('active');
+
+        // Change image
+        if(color === 'black') fanImage.src = "         https://www.pakfansofficial.com/public/resources/img/4x3/ltcp_black.jpg?ts=20230515070447365365                                      ";
+        else if(color === 'brown') fanImage.src = " https://muhammadistores.pk/wp-content/uploads/2025/05/LouverFanPedestal2222_grande-2.webp                              ";
+        else if(color === 'white') fanImage.src = "                   https://www.pakfansofficial.com/public/resources/img/4x3/ltcp_off_white.jpg?ts=20230515070447369365                  ";
+    }
+</script>
+
+</body>
+</html>
